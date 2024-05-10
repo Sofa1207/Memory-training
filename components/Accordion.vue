@@ -1,9 +1,12 @@
 <script setup lang="ts">
+import type { IGameCard } from "~/types/gameCard";
 
-const props = defineProps({
-  title: { type: String, default: () => '' },
-  cards: { type: Array, default: () => ([]) }
-})
+interface Props {
+  title: string
+  cards: IGameCard[]
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -18,12 +21,17 @@ const props = defineProps({
         </template>
       </v-expansion-panel-title>
       <v-expansion-panel-text class="bg-secondary px-0">
-        <card-game
+        <nuxt-link
             v-for="(card, index) in cards"
             :key="`card-${card.level}-${index}`"
-            :card="card"
-            class="mb-4"
-        />
+        >
+          <card-game
+              :card="card"
+              :index="index"
+              class="mb-4"
+          />
+        </nuxt-link>
+
       </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>

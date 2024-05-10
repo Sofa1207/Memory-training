@@ -21,6 +21,7 @@ export default defineNuxtConfig({
         Roboto: [400, 500, 600, 700],
       }
     }],
+    '@pinia-plugin-persistedstate/nuxt',
   ],
 
   devtools: { enabled: false },

@@ -11,10 +11,7 @@ const Theme = {
         background: '#FBFCFE',
         primary: '#3a4e6c',
         secondary: '#ced2e2',
-        error: '#000000',
-        info: '#000000',
-        success: '#000000',
-        warning: '#000000',
+        error: '#d51c1c',
         yellow: '#ddc700'
     }
 }

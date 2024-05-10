@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import { onMounted } from "vue"
 import { useGameStore } from "~/store/gameStore";
+
 const game_store = useGameStore()
 
 const gameEz = game_store.gameLevelEz
 const gameMedium = game_store.gameLevelMedium
 const gameHard = game_store.gameLevelHard
+
+onMounted(() => {
+})
 </script>
 
 <template>
@@ -14,18 +19,18 @@ const gameHard = game_store.gameLevelHard
         <h1 class="text-primary mb-4">Игры</h1>
 
         <Accordion
-          title="Легкие"
-          :cards="gameEz"
+            title="Легкие"
+            :cards="gameEz"
         />
 
         <Accordion
-          title="Средние"
-          :cards="gameMedium"
+            title="Средние"
+            :cards="gameMedium"
         />
 
         <Accordion
-          title="Тяжелые"
-          :cards="gameHard"
+            title="Тяжелые"
+            :cards="gameHard"
         />
       </v-container>
 

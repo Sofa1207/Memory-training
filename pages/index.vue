@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { onMounted } from "vue"
+import { useGameStore } from "~/store/gameStore";
 
+const game_store = useGameStore()
+onMounted(() => {
+})
 </script>
 
 <template>

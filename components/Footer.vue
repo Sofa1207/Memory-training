@@ -1,5 +1,16 @@
 <script setup lang="ts">
-const footerNav = [
+
+import { useRoute } from "vue-router";
+
+const route = useRoute()
+
+interface IFooter {
+  id: number,
+  link: string,
+  icon: string
+}
+
+const footerNav: readonly IFooter[] = [
   {
     id: 0,
     link: '/',
@@ -11,16 +22,23 @@ const footerNav = [
     icon: 'mdi-controller'
   },
 ]
+
+const isActive = (path: string): boolean => {
+  if (path === '/' && route.path === '/') return true;
+
+  return route.path.startsWith(path + '/') || route.path === path;
+}
+
 </script>
 
 <template>
-  <v-footer class="d-flex justify-space-around py-3">
+  <v-footer class="d-flex justify-space-around py-3" elevation="16">
     <nuxt-link
         v-for="link in footerNav"
         :key="link.id"
         :to="link.link"
         class="text-white bg-secondary rounded-lg pa-2"
-        exact-active-class="text-primary"
+        :class="{'text-primary': isActive(link.link)}"
     >
       <v-icon :icon="link.icon"></v-icon>
     </nuxt-link>
